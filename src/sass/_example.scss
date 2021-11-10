@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
 }
+.body {
+  background-color: #f5f4fa;
+}
 .container {
   width: 1200px;
   margin-right: auto;
@@ -17,6 +20,8 @@
   margin-bottom: 20px;
 }
 .gallery {
+  padding: 0;
+  margin: 0;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -25,26 +30,29 @@
 .image {
   display: block;
   width: 100%;
-  height: 100%;
-  outline: 1px solid tomato;
+  height: 260px;
+  object-fit: cover;
+  //   outline: 1px solid tomato;
 }
 .stats {
   display: flex;
-  justify-content: center;
-  outline: 1px solid green;
+  justify-content: space-around;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .stats-item {
+  margin-bottom: 0;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .photo-card {
-  outline: 1px solid blue;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-basis: content;
-  //   width: 320px;
+  //   outline: 1px solid blue;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+  border-radius: 0px 0px 4px 4px;
 }
-.gallery-item {
-  flex-grow: 1;
-}
+// .gallery-item {
+
+// }
