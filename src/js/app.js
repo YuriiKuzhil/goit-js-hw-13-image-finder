@@ -3,7 +3,6 @@ import ApiService from './apiService';
 import showAlert from './alert-message';
 
 const refs = {
-  //   container: document.querySelector('.container'),
   listgallery: document.querySelector('.gallery'),
   searchForm: document.querySelector('#search-form'),
   loadMoreBtn: document.querySelector('[data-action="load-more"]'),
@@ -52,6 +51,7 @@ function onLoadMore() {
     });
   });
 }
+
 function clearListGallery() {
   refs.listgallery.innerHTML = '';
 }
