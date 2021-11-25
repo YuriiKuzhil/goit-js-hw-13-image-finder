@@ -1,6 +1,7 @@
 import imagesGalleryTpl from '../templates/images-gallery.hbs';
 import ApiService from './apiService';
 import showAlert from './alert-message';
+const basicLightbox = require('basiclightbox');
 
 const refs = {
   listgallery: document.querySelector('.gallery'),
@@ -11,6 +12,7 @@ const apiService = new ApiService();
 
 refs.searchForm.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
+refs.listgallery.addEventListener('click', openModalWithImage);
 
 function renderListGallery(images) {
   refs.listgallery.insertAdjacentHTML('beforeend', imagesGalleryTpl(images));
@@ -33,6 +35,7 @@ function onSearch(e) {
       showAlert('Images has not been found. Please, check your request!');
       return;
     }
+
     clearListGallery();
     apiService.resetPage();
     renderListGallery(images);
@@ -54,4 +57,18 @@ function onLoadMore() {
 
 function clearListGallery() {
   refs.listgallery.innerHTML = '';
+}
+
+function openModalWithImage(evt) {
+  if (evt.target.nodeName !== 'IMG') {
+    return;
+  }
+  const instance = basicLightbox.create(`<img src=${evt.target.srcset} alt='' />`);
+  instance.show(() => {
+    window.addEventListener('keydown', evt => {
+      if (evt.code === 'Escape') {
+        instance.close();
+      }
+    });
+  });
 }
